@@ -22,11 +22,11 @@ Make sure you have a flavor with enough storage ( ~ 10 Gb, 15 Gb if you want to 
 ###Details
 - The server self-updates, whenever the game is updated.
 
-- The port 27015 is used by the game server to send/receive informations from the clients.
+- The port 27015 is used by the game server to send/receive informations from the clients (be sure it's open)
 
-- The port 27005 is used to send SourceTV (in case of tournaments).
+- The port 27005 is used to send SourceTV , in case of tournaments (be sure it's open in this case)
 
-- Libc6:i386 is needed to run the server.
+- Libc6:i386 is needed to run the server (the cookbook automatically downloads this package).
 
 - If the server crashes, it automatically restarts and writes the problem in the log file.
 - More infos: 
