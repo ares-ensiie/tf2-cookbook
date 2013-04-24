@@ -4,7 +4,8 @@
 Create a vm running a Half-Life Dedicated Server (here TF2 server), with etf2l configuration.
 ###TODO
 Create a role containing the 2 following recipes:
->- apt
+
+- apt
 - hlds
 
 ###Use:
@@ -29,9 +30,10 @@ Make sure you have a flavor with enough storage ( ~ 10 Gb, 15 Gb if you want to 
 
 - If the server crashes, it automatically restarts and writes the problem in the log file.
 - More infos: 
-	- Official TF2 wiki : 
+    - Official TF2 wiki : 
 >`http://wiki.teamfortress.com/wiki/Servers`
-	- Valve support: 
+	
+    - Valve support: 
 >`https://support.steampowered.com/kb_cat.php?s=a9ffd147c7c72e68436ea3db26e555ef&id=77`
-	- Valve developer wiki: 
+    - Valve developer wiki: 
 >`https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking`
