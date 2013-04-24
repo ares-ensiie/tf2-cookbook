@@ -1,0 +1,13 @@
+port <%= node[:hlds][:port] %>
+bind <%= node[:hlds][:bind] %>
+loglevel <%= node[:hlds][:loglevel] %>
+dir <%= node[:hlds][:data_dir] %>
+
+daemonize no
+logfile stdout
+save 900 1
+save 300 10
+save 60 10000
+rdbcompression yes
+dbfilename dump.rdb
+
