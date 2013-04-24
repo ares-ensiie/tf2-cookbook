@@ -1,68 +1,37 @@
-hlds Cookbook
-=============
-TODO: Enter the cookbook description here.
+#hlds Cookbook
+##Author: Philippe Gaultier
+###Purpose
+Create a vm running a Half-Life Dedicated Server (here TF2 server), with etf2l configuration.
+###TODO
+Create a role containing the 2 following recipes:
+>- apt
+- hlds
 
-e.g.
-This cookbook makes your favorite breakfast sandwhich.
+###Use:
+-Upload the cookbook on your chef server
+>`knife cookbook upload hlds`
 
-Requirements
-------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+-Create a vm with this cookbook
+>`knife openstack create server ... -r 'recipe[apt],recipe[hlds]' -f flavor_id`
 
-e.g.
-#### packages
-- `toaster` - hlds needs toaster to brown your bagel.
+The apt recipe needs to be executed in order to update the apt packages.
 
-Attributes
-----------
-TODO: List you cookbook attributes here.
+Make sure you have a flavor with enough storage ( ~ 10 Gb, 15 Gb if you want to add mods/maps). At the moment the whole game directory takes 7.5 Gb, but the game is weekly/monthly  updated, and new files are often added.
 
-e.g.
-#### hlds::default
-<table>
-  <tr>
-    <th>Key</th>
-    <th>Type</th>
-    <th>Description</th>
-    <th>Default</th>
-  </tr>
-  <tr>
-    <td><tt>['hlds']['bacon']</tt></td>
-    <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
-  </tr>
-</table>
+###Details
+- The server self-updates, whenever the game is updated.
 
-Usage
------
-#### hlds::default
-TODO: Write usage instructions for each cookbook.
+- The port 27015 is used by the game server to send/receive informations from the clients.
 
-e.g.
-Just include `hlds` in your node's `run_list`:
+- The port 27005 is used to send SourceTV (in case of tournaments).
 
-```json
-{
-  "name":"my_node",
-  "run_list": [
-    "recipe[hlds]"
-  ]
-}
-```
+- Libc6:i386 is needed to run the server.
 
-Contributing
-------------
-TODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.
-
-e.g.
-1. Fork the repository on Github
-2. Create a named feature branch (like `add_component_x`)
-3. Write you change
-4. Write tests for your change (if applicable)
-5. Run the tests, ensuring they all pass
-6. Submit a Pull Request using Github
-
-License and Authors
--------------------
-Authors: TODO: List authors
+- If the server crashes, it automatically restarts and writes the problem in the log file.
+- More infos: 
+	- Official TF2 wiki : 
+>`http://wiki.teamfortress.com/wiki/Servers`
+	- Valve support: 
+>`https://support.steampowered.com/kb_cat.php?s=a9ffd147c7c72e68436ea3db26e555ef&id=77`
+	- Valve developer wiki: 
+>`https://developer.valvesoftware.com/wiki/Source_Multiplayer_Networking`
