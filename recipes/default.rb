@@ -69,9 +69,9 @@ script "download_files_server" do
   EOH
 end
 
-script "configure_server" do
+script "prepare_configure_server" do
   interpreter "bash"
-  cwd "/home/hlds/gameserver/orangebox"
+  cwd "/home/hlds/gameserver"
   code <<-EOH
   touch steam_appid.txt 
   echo "440" > steam_appid.txt
@@ -82,7 +82,7 @@ end
 
 script "configure_server" do
   interpreter "bash"
-  cwd "/home/hlds/gameserver/orangebox/tf/cfg"
+  cwd "/home/hlds/gameserver/tf/cfg"
   code <<-EOH
   cfg=etf2l_configs_full_2013_01_17.zip
  
@@ -92,11 +92,11 @@ script "configure_server" do
   EOH
 end
 
-#script "run_server" do
-#  interpreter "bash"
-#  cwd "/home/hlds/gameserver/orangebox"
-#  code <<-EOH
-#  ./srcds_run -game tf -autoupdate -steambin /home/hlds/steam -maxplayers 24 -map pl_badwater
-#  EOH
-#end
+script "run_server" do
+  interpreter "bash"
+  cwd "/home/hlds/gameserver"
+  code <<-EOH
+  echo "./srcds_run -game tf -autoupdate -steambin /home/hlds/steam -maxplayers 24 -map pl_badwater" > run.sh
+  EOH
+end
 
