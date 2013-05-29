@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package "libc6:i386" do
+package "ia32-libs" do
   action :install
 end
 
