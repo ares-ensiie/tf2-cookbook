@@ -92,7 +92,7 @@ script "run_server" do
   cwd "/home/hlds"
   user "ubuntu"
   code <<-EOH
- ./tf_server/srcds_run -steam_dir steamcmd/ -steamcmd_script steamcmd.sh -console -game tf +map pl_badwater -maxplayers 24 
+ ./tf2_server/srcds_run -steam_dir steamcmd/ -steamcmd_script steamcmd.sh -console -game tf +map pl_badwater -maxplayers 24 
   EOH
 end
 
