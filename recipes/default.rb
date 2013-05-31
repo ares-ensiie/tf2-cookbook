@@ -74,7 +74,7 @@ end
 script "download_files_server" do
   interpreter "bash"
   cwd "/home/hlds"
-  user "hlds"
+  user "ubuntu"
   code <<-EOH
   ./steamcmd.sh +login anonymous +force_install_dir ./tf2_server +app_update 232250 validate +quit
   EOH
@@ -90,6 +90,7 @@ end
 script "run_server" do
   interpreter "bash"
   cwd "/home/hlds"
+  user "ubuntu"
   code <<-EOH
  ./tf_server/srcds_run -steam_dir steamcmd/ -steamcmd_script steamcmd.sh -console -game tf +map pl_badwater -maxplayers 24 
   EOH
