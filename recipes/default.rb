@@ -74,6 +74,7 @@ end
 script "download_files_server" do
   interpreter "bash"
   cwd "/home/hlds"
+  user "hlds"
   code <<-EOH
   ./steamcmd.sh +login anonymous +force_install_dir ./tf2_server +app_update 232250 validate +quit
   EOH
