@@ -22,7 +22,7 @@ end
 directory "/home/hlds" do
   owner "hlds"
   group "users"
-  mode 0755
+  mode 0777
   action :create
 end 
 
@@ -56,11 +56,41 @@ script "decompress_steamCMD" do
   EOH
 end
 
+
+directory "/home/hlds/tf2_server" do
+  owner "hlds"
+  group "users"
+  mode 0777
+  action :create
+end 
+
+directory "/home/hlds" do
+  owner "hlds"
+  group "users"
+  mode 0777
+  recursive true
+end 
+
 script "download_files_server" do
   interpreter "bash"
   cwd "/home/hlds"
   code <<-EOH
-  ./steamcmd.sh +login anonymous +force_install_dir ./tf_server +app_update 232250 validate +quit
+  ./steamcmd.sh +login anonymous +force_install_dir ./tf2_server +app_update 232250 validate +quit
+  EOH
+end
+
+directory "/home/hlds" do
+  owner "hlds"
+  group "users"
+  mode 0777
+  recursive true
+end 
+
+script "run_server" do
+  interpreter "bash"
+  cwd "/home/hlds"
+  code <<-EOH
+ ./tf_server/srcds_run -steam_dir steamcmd/ -steamcmd_script steamcmd.sh -console -game tf +map pl_badwater -maxplayers 24 
   EOH
 end
 
