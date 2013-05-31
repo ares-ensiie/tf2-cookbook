@@ -60,7 +60,7 @@ script "download_files_server" do
   interpreter "bash"
   cwd "/home/hlds"
   code <<-EOH
-  steamcmd +login anonymous +force_install_dir ./tf_server +app_update 232250 validate +quit
+  ./steamcmd.sh +login anonymous +force_install_dir ./tf_server +app_update 232250 validate +quit
   EOH
 end
 
