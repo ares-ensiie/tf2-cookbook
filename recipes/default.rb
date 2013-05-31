@@ -6,7 +6,7 @@
 #
 # All rights reserved - Do Not Redistribute
 #
-package "libc6:i386" do
+package "ia32-libs" do
   action :install
 end
 
@@ -40,24 +40,19 @@ end
  
  
 
-script "install_server" do
+script "download_steamCMD" do
   interpreter "bash"
   cwd "/home/hlds"
   code <<-EOH
-   wget http://storefront.steampowered.com/download/hldsupdatetool.bin
-   chmod +x hldsupdatetool.bin
-   echo yes | ./hldsupdatetool.bin
+  wget http://media.steampowered.com/client/steamcmd_linux.tar.gz
   EOH
 end
 
-script "prepare_download_files_server" do
+script "decompress_steamCMD" do
   interpreter "bash"
   cwd "/home/hlds"
   code <<-EOH
-  chmod +x ./steam
-  ./steam > steam.log
-  ./steam 
-  mkdir gameserver
+  tar -xvzf steamcmd_linux.tar.gz
   EOH
 end
 
@@ -65,38 +60,27 @@ script "download_files_server" do
   interpreter "bash"
   cwd "/home/hlds"
   code <<-EOH
-  ./steam -command update -game tf -dir gameserver
+  steamcmd +login anonymous +force_install_dir ./tf_server +app_update 232250 validate +quit
   EOH
 end
 
-script "configure_server" do
-  interpreter "bash"
-  cwd "/home/hlds/gameserver/orangebox"
-  code <<-EOH
-  touch steam_appid.txt 
-  echo "440" > steam_appid.txt
-  chmod +x srcds_run
-  chmod +x srcds_linux
-  EOH
-end
 
-script "configure_server" do
-  interpreter "bash"
-  cwd "/home/hlds/gameserver/orangebox/tf/cfg"
-  code <<-EOH
-  cfg=etf2l_configs_full_2013_01_17.zip
- 
-  wget files.ntraum.de/priv/etf2l_configs_full_2013_01_17.zip
-  unzip $cfg
-  rm $cfg 
-  EOH
-end
-
-#script "run_server" do
+#script "configure_server" do
 #  interpreter "bash"
-#  cwd "/home/hlds/gameserver/orangebox"
+#  cwd "/home/hlds/"
 #  code <<-EOH
-#  ./srcds_run -game tf -autoupdate -steambin /home/hlds/steam -maxplayers 24 -map pl_badwater
+#  cfg=etf2l_configs_full_2013_01_17.zip
+ 
+#  wget files.ntraum.de/priv/etf2l_configs_full_2013_01_17.zip
+#  unzip $cfg
+#  rm $cfg 
 #  EOH
 #end
 
+#script "run_server" do
+#  interpreter "bash"
+#  cwd "/home/hlds/"
+#  code <<-EOH
+#  echo "./srcds_run -game tf -autoupdate -steambin /home/hlds/steam -maxplayers 24 -map pl_badwater" > run.sh
+#  EOH
+#end
