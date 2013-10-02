@@ -1,5 +1,4 @@
-#WARNING: outdated since tf2 was brought to steampipe. Cookbook will be updated soon.
-#hlds Cookbook
+#Tf2 server cookbook
 ##Author: Philippe Gaultier
 ###Purpose
 Create a vm running a Half-Life Dedicated Server (here TF2 server), with etf2l configuration.
