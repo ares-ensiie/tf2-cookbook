@@ -1,7 +1,7 @@
 name             'hlds'
-maintainer       'YOUR_COMPANY_NAME'
-maintainer_email 'YOUR_EMAIL'
-license          'All rights reserved'
-description      'Installs/Configures hlds'
+maintainer       'Ares'
+maintainer_email 'philgaultier@gmail.com'
+license          'MIT License'
+description      'Installs/Configures half-life dedicated server'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.2.6'
