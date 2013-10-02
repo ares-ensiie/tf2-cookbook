@@ -1,3 +1,4 @@
+#WARNING: outdated since tf2 was brought to steampipe. Cookbook will be updated soon.
 #hlds Cookbook
 ##Author: Philippe Gaultier
 ###Purpose
